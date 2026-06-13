@@ -10,6 +10,6 @@ workflows:
       - name: Install CocoaPods
         script: cd ios && pod install
       - name: Build for Simulator
-        script: flutter build ios --simulator --release --no-codesign
+        script: flutter build ios --simulator --debug
     artifacts:
       - build/ios/iphonesimulator/Runner.app
