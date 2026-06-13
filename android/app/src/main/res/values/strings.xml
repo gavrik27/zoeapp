@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">zoeapp</string>
+    <string name="accessibility_description">Servicio para bloquear el teléfono en modo estudio</string>
+</resources>

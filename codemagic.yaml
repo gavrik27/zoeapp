@@ -1,0 +1,17 @@
+workflows:
+  ios-simulator-preview:
+    name: iOS Simulator Preview (Web)
+    environment:
+      flutter: stable
+      xcode: latest
+    scripts:
+      - name: Install Flutter dependencies
+        script: flutter pub get
+      - name: Install CocoaPods
+        script: |
+          cd ios && pod install
+      - name: Build for Simulator
+        script: |
+          flutter build ios --simulator --release
+    artifacts:
+      - build/ios/iphonesimulator/Runner.app
