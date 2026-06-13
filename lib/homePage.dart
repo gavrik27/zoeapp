@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:video_player/video_player.dart';
+import 'package:zoeapp/testIos.dart';
 
 import 'focusSession.dart';
 
@@ -82,7 +83,13 @@ class _HomePageState extends State<HomePage> {
     await intent.launch();
   }
 }
-
+Future<void> _irAPantallaEstudio2() async {
+ 
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ScreenTimeSetup()),
+    );
+}
 Future<void> _irAPantallaEstudio() async {
     // Verificar overlay nuevamente
     final overlayStatus = await Permission.systemAlertWindow.status;
@@ -534,6 +541,12 @@ Column(
 
     // --- Botón de Acción Principal REDONDO (Icono ON) ---
    // --- Botón de Acción Principal REDONDO (Icono ON) ---
+
+
+Row(
+ 
+  children: [
+     const SizedBox(width: 20),
 Center(
   child: Container(
     width: 30,
@@ -568,6 +581,44 @@ Center(
     ),
   ),
 ),
+  const SizedBox(width: 200),
+Center(
+  child: Container(
+    width: 30,
+    height: 30,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      border: Border.all(
+        color: Colors.white.withOpacity(_overlayGranted ? 0.25 : 0.4),
+        width: 1.5,
+      ),
+      color:  Colors.red.withOpacity(0.02),
+      boxShadow: _overlayGranted ? [
+        BoxShadow(
+          color: Colors.white.withOpacity(0.02),
+          blurRadius: 15,
+          spreadRadius: 2,
+        )
+      ] : null,
+    ),
+    child: ClipRRect(
+      borderRadius: BorderRadius.circular(32),
+      child: InkWell(
+        onTap: _irAPantallaEstudio2 ,
+        child: Center(
+          child: Icon(
+            Icons.power_settings_new_rounded,
+            size: 25,
+            color: Colors.red ,
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+    const SizedBox(width: 20),],
+),
+ 
   ],
 ),
 
